@@ -62,16 +62,25 @@ var test = require(config.test);
 var username = process.env.BROWSERSTACK_USERNAME || config.user;
 var accessKey = process.env.BROWSERSTACK_ACCESS_KEY || config.key;
 //loops thru:
-//  capabilities:
-// [
-// {
-//     browserName: 'chrome',
-//         name: 'single_test',
-//             build: 'wd-browserstack'
-// }
-//   ]
+// capabilities: [
+//   {
+//     os: 'OS X',
+//     os_version: 'Mojave',
+//     browser: 'Chrome',
+//     browser_version: '72.0 beta',
+//     resolution: '1024x768'
+//   },
+//   {
+//     os: 'Windows',
+//     os_version: '8.1',
+//     browser: 'IE',
+//     browser_version: '11.0',
+//     resolution: '1024x768'
+//   }
+// ]
 for (var i in config.capabilities) {
   var caps = config.capabilities[i];
+  //WHAT IS LOCAL?
   if (caps['browserstack.local']) {
     // Code to start browserstack local before start of test and stop browserstack local after end of test
     console.log('Connecting local');
@@ -79,7 +88,6 @@ for (var i in config.capabilities) {
     bs_local.start({ key: accessKey }, function(error) {
       if (error) return console.log(error.red);
       console.log('Connected. Now testing...');
-
       runOnBrowserStack(caps, test, function() {
         bs_local.stop();
       });

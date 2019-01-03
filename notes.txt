@@ -1,0 +1,49 @@
+Selenium-Grid ---> allows you run your tests on different machines against different browsers in parallel. 
+That is, running multiple tests at the same time against different machines running different browsers 
+and operating systems. Essentially, Selenium-Grid support distributed test execution. 
+It allows for running your tests in a distributed test execution environment.
+
+=======================================================================================================================================================
+
+
+WD-browserstack ---> WD Integration with BrowserStack.
+
+=======================================================================================================================================================
+
+What is local testing? 
+
+BrowserStack enables you to run automated tests on your internal development environments, on localhost, 
+and from behind a corporate firewall. This feature is called "Local Testing".
+Local Testing establishes a secure connection between your machine and the BrowserStack cloud. 
+Once you set up Local Testing, all URLs work out of the box, including HTTPS URLs and those behind a proxy or firewall.
+
+=======================================================================================================================================================
+
+what is chai? 
+
+Chai is a BDD / TDD assertion library for node and the browser that can be delightfully paired with any javascript testing framework.
+
+
+=======================================================================================================================================================
+
+what is chai-as-promised? 
+
+Chai as Promised extends Chai with a fluent language for asserting facts about promises.
+
+Instead of manually wiring up your expectations to a promise's fulfilled and rejected handlers:
+
+doSomethingAsync().then(
+    function (result) {
+        result.should.equal("foo");
+        done();
+    },
+    function (err) {
+       done(err);
+    }
+);
+
+=== 
+return doSomethingAsync().should.eventually.equal("foo");
+
+=======================================================================================================================================================
+

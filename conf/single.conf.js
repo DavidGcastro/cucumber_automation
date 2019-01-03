@@ -17,6 +17,13 @@ exports.config = {
       browser: 'Chrome',
       browser_version: '72.0 beta',
       resolution: '1024x768'
+    },
+    {
+      os: 'Windows',
+      os_version: '8.1',
+      browser: 'IE',
+      browser_version: '11.0',
+      resolution: '1024x768'
     }
   ]
 };
