@@ -1,0 +1,24 @@
+{
+  "name": "cucumber_automation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DavidGcastro/cucumber_automation.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DavidGcastro/cucumber_automation/issues"
+  },
+  "homepage": "https://github.com/DavidGcastro/cucumber_automation#readme",
+  "dependencies": {
+    "cucumber": "^5.1.0",
+    "wd": "^1.11.1"
+  }
+}
