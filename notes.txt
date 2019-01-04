@@ -73,10 +73,26 @@ API not ready? Make up a fake one by creating a static .json file containing fak
 =======================================================================================================================================================
 
 What is a test pyramid? 
+https://martinfowler.com/bliki/TestPyramid.html
 
 The test pyramid is a way of thinking about different kinds of automated tests should be used to create a balanced portfolio. 
 Its essential point is that you should have many more low-level UnitTests 
 than high level BroadStackTests running through a GUI.
+
+The pyramid also argues for an intermediate layer of tests that act through a service layer of an application, 
+what I refer to as SubcutaneousTests. 
+
+SubcutaneousTests ===>  test that operates just under the UI of an application. This is particulary valuable when doing functional testing of an 
+application: when you want to test end-to-end behavior, but it's difficult to test through the UI itself.
+
+Subcutaneous testing can avoid difficulties with hard-to-test presentation technologies and usually is much faster than testing through the UI. 
+The big danger is that, unless you are a firm follower of keeping all useful logic out of your UI, 
+subcutaneous testing will leave important behavior out of its test.
+
+
+These can provide many of the advantages of end-to-end tests but avoid many of the 
+complexities of dealing with UI frameworks. In web applications this would correspond to testing through an API layer while the top UI part of the 
+pyramid would correspond to tests using something like Selenium or Sahi.
 
 =======================================================================================================================================================
 
@@ -104,4 +120,70 @@ Tests are usually run periodically, often after every change to the source code.
 By breaking your program into pieces you can attempt to run an exhaustive examination of your program's capabilities. 
 So then you know it works and therefore write fewer bugs as well as fixing bugs with greater speed.
 
+Performing unit tests is designed to be simple, generally the tests are written in the form of functions that will determine whether a 
+returned value equals the value you were expecting when you wrote the function (or the value you will expect when you eventually write it - 
+this is called Test Driven Development when you write the tests first).
+
+
  =======================================================================================================================================================
+
+CUCUMBER BDD ANTI PATTERNS ===> 
+
+1. One anti-pattern is that you write the feature files after you have written the code. This could arguable be the worst anti-pattern when using Gherkin. 
+It is very common when you start using Cucumber and BDD. What you really want is to write the Gherkin before you write the software. 
+This will allow you to actually use the scenarios to drive the development and not the other way around, to document what you developed.
+Why should you write the Gherkin before you write the software? Documenting the wanted behaviour is a way to make sure that everyone agrees on what the software is supposed to do.
+When you have reached that agreement, you have a common understanding of the problem, then it is a good time to start the implementation and write the code needed.
+Writing code before you have come to a common understanding is one way to make sure you implement something that you will have to change later.
+
+2. Too High Level: 
+
+If a scenario is on a too high level, you can't really trust it. You can probably not tell what it actually will do because it is too high level and vague.
+
+IE: 
+
+Given a bank account
+When I withdraw some money
+Then the balance should be the original balance minus the amount withdrawn
+
+This is an example that expresses a business rule. It doesn't contain any concrete example.
+ We don't know the original balance; we don't know how much that was withdrawn so we can't know the outcome. It is not concrete.
+
+
+ 3. No clear separation between Given/When/Then
+It happens that beginners have a hard time grasping the difference between Given, When and Then. The problem is that from a technical perspective, 
+there is no difference, Cucumber will treat them all equal.
+
+What is the difference then?
+
+Given is the context - the past
+When is an action that changes the system - the present
+Then is the expected outcome - the near future
+
+ =======================================================================================================================================================
+
+
+STEP DEFINITION SCOPE
+Step definitions aren’t linked to a particular feature file or scenario. The file, class or package name of a step definition does not affect what Gherkin steps it will match. 
+The only thing that matters is the step definition’s expression.
+
+ =======================================================================================================================================================
+
+Hooks 
+Hooks are blocks of code that can run at various points in the Cucumber execution cycle. They are typically used for setup and teardown of the environment before and after each scenario.
+Where a hook is defined has no impact on what scenarios or steps it is run for. If you want more fine-grained control, you can use tagged hooks.
+You can declare hooks in your features/support/env.js file, or any other file under the features/support directory (for example, in a file called features/support/hooks.js).
+
+Before hooks run before the first step of each scenario.
+After hooks run after the last step of each scenario, even when steps are failed, undefined, pending, or skipped.
+
+Tagged hooks
+Hooks can be conditionally selected for execution based on the tags of the scenario. To run a particular hook only for certain scenarios, 
+you can associate a Before or After Hook with a tag expression.
+
+Before({tags: '@browser and not @headless'}, function () {
+})
+
+ =======================================================================================================================================================
+
+Cucumber uses expressions to link a Gherkin Step to a Step Definition. You can use Regular Expressions or Cucumber Expressions.
