@@ -44,10 +44,6 @@ Before(function(scenario, callback) {
 });
 
 //after tests are done destroy session
-After(function(scenario, callback) {
-  this.driver.quit().then(function() {
-    if (bs_local) {
-      bs_local.stop(callback);
-    } else callback();
-  });
+After(async function(scenario) {
+  await this.driver.quit();
 });
