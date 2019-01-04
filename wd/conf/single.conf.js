@@ -1,7 +1,7 @@
 exports.config = {
   user: 'davidcastro9',
   key: 'qYQDPWb8hzmkyb1fdKvT',
-
+  server: 'hub-cloud.browserstack.com',
   seleniumHost: 'hub-cloud.browserstack.com',
   seleniumPort: 80,
 

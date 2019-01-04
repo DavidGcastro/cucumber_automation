@@ -1,29 +1,19 @@
 const assert = require('assert');
 const { When, Then } = require('cucumber');
 
-When(/^I type query as "([^"]*)"$/, function(searchQuery, next) {
-  this.driver.get('https://www.google.com/ncr');
-  this.driver
-    .findElement({ name: 'q' })
-    .sendKeys(searchQuery + '\n')
-    .then(next);
+When('I type query as {string}', { timeout: 50 * 10000 }, async function(
+  searchQuery
+) {
+  // Write code here that turns the phrase above into concrete actions
+  await this.driver.get('https://www.google.com');
+  await this.driver.findElement({ name: 'q' }).sendKeys(searchQuery + '\n');
 });
 
 Then(/^I submit$/, function(next) {
-  var self = this;
-  this.driver
-    .findElement({ name: 'btnG' })
-    .click()
-    .then(function() {
-      self.driver.wait(function() {
-        return self.driver.isElementPresent(webdriver.By.id('top_nav'));
-      }, 5000);
-      next();
-    });
+  next();
 });
 
-Then(/^I should see title "([^"]*)"$/, function(titleMatch, next) {
-  this.driver.getTitle().then(function(title) {
-    assert.equal(title, titleMatch, next, 'Expected title to be ' + titleMatch);
-  });
+Then(/^I should see title "([^"]*)"$/, async function(titleMatch) {
+  let title = await this.driver.getTitle();
+  assert.equal(title, titleMatch, 'Expected title to be ' + titleMatch);
 });
