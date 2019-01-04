@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "cucumber-js",
-    "single": "node scripts/browserstack.js ../conf/single.conf.js"
+    "single": "node wd/scripts/browserstack.js ../conf/single.conf.js"
   },
   "repository": {
     "type": "git",
