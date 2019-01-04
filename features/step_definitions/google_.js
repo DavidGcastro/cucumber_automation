@@ -1,5 +1,5 @@
 const assert = require('assert');
-const { When, Then, Given } = require('cucumber');
+const { When, Then } = require('cucumber');
 
 When(/^I type query as "([^"]*)"$/, function(searchQuery, next) {
   this.driver.get('https://www.google.com/ncr');

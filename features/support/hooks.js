@@ -3,12 +3,12 @@
 const config = require('../../wd/conf/single.conf').config;
 const username = process.env.BROWSERSTACK_USERNAME || config.user;
 const accessKey = process.env.BROWSERSTACK_ACCESS_KEY || config.key;
-const { Builder } = require('selenium-webdriver');
+const webdriver = require('selenium-webdriver');
 const { Before, After } = require('cucumber');
 
 // Create sesh
 const createBrowserStackSession = function(config, capabilities) {
-  return new Builder()
+  return new webdriver.Builder()
     .usingServer('http://' + config.server + '/wd/hub')
     .withCapabilities(capabilities)
     .build();
