@@ -47,3 +47,61 @@ return doSomethingAsync().should.eventually.equal("foo");
 
 =======================================================================================================================================================
 
+BDD in Cucumber ===>  The main difference is that Cucumber operates on a higher abstraction level, 
+closer to the domain and farther away from classes and methods. BDD builds on TDD, while preserving a strong 
+link between the business requirements and the technical solution.
+This technique is called Outside-in because programmers typically start with the functionality that is closest 
+to the user (the user interface, which is on the outside of the system) and gradually work towards the guts of the system (business logic, 
+persistence, messaging and so on) as they discover more of what needs to be implemented.
+
+=======================================================================================================================================================
+
+what is a stub in programming? 
+
+A stub is a controllable replacement for an Existing Dependency (or collaborator) in the system. 
+By using a stub, you can test your code without dealing with the dependency directly.
+External Dependency - Existing Dependency:
+It is an object in your system that your code under test interacts with and over which you have no control. 
+(Common examples are filesystems, threads, memory, time, and so on.)
+
+Layman's terms, it's dummy data (or fake data, test data...etc.) that you can use to test or develop your code against until you (or the other party) 
+is ready to present/receive real data. It's a programmer's "Lorem Ipsum".
+
+Employee database not ready? Make up a simple one with Jane Doe, John Doe...etc. 
+API not ready? Make up a fake one by creating a static .json file containing fake data.
+
+=======================================================================================================================================================
+
+What is a test pyramid? 
+
+The test pyramid is a way of thinking about different kinds of automated tests should be used to create a balanced portfolio. 
+Its essential point is that you should have many more low-level UnitTests 
+than high level BroadStackTests running through a GUI.
+
+=======================================================================================================================================================
+
+What is a non-determinisic test? 
+
+An automated regression suite can play a vital role on a software project, valuable both for reducing defects in production and essential for 
+evolutionary design. In talking with development teams I've often heard about the problem of non-deterministic tests - tests that sometimes pass 
+and sometimes fail. Left uncontrolled, non-deterministic tests can completely destroy the value of an automated regression suite. In this article 
+I outline how to deal with non-deterministic tests. Initially quarantine helps to reduce their damage to other tests,
+ but you still have to fix them soon. Therefore I discuss treatments for the common causes for non-determinism: lack of isolation, asynchronous behavior, 
+ remote services, time, and resource leaks.
+
+ https://martinfowler.com/articles/nonDeterminism.html
+
+ =======================================================================================================================================================
+
+
+What are unit tests? 
+
+Unit testing involves breaking your program into pieces, and subjecting each piece to a series of tests.
+Usually tests are run as separate programs, but the method of testing varies, depending on the language, and type of software (GUI, command-line, library).
+Most languages have unit testing frameworks, you should look into one for yours.
+Tests are usually run periodically, often after every change to the source code. The more often the better, because the sooner you will catch problems.
+
+By breaking your program into pieces you can attempt to run an exhaustive examination of your program's capabilities. 
+So then you know it works and therefore write fewer bugs as well as fixing bugs with greater speed.
+
+ =======================================================================================================================================================
